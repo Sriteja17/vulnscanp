@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VulnScan5G — Loading</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #0f0f1a;
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      -webkit-app-region: drag;
+      user-select: none;
+    }
+
+    /* Animated background glow */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      animation: pulse-bg 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-bg {
+      0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+    }
+
+    .logo-container {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 24px;
+    }
+
+    /* Shield icon via CSS */
+    .shield {
+      width: 72px;
+      height: 80px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .shield svg {
+      width: 72px;
+      height: 80px;
+      filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.4));
+      animation: shield-glow 2.5s ease-in-out infinite;
+    }
+
+    @keyframes shield-glow {
+      0%, 100% { filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.3)); }
+      50% { filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.6)); }
+    }
+
+    .app-name {
+      position: relative;
+      z-index: 1;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+
+    .app-subtitle {
+      position: relative;
+      z-index: 1;
+      font-size: 0.8rem;
+      color: #64748b;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    /* Loading bar */
+    .loader-track {
+      position: relative;
+      z-index: 1;
+      width: 200px;
+      height: 3px;
+      background: rgba(56, 189, 248, 0.15);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .loader-bar {
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+      border-radius: 2px;
+      animation: slide 1.5s ease-in-out infinite;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(350%); }
+    }
+
+    .status {
+      position: relative;
+      z-index: 1;
+      font-size: 0.75rem;
+      color: #475569;
+      animation: fade-status 2s ease-in-out infinite;
+    }
+
+    @keyframes fade-status {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .version {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      font-size: 0.65rem;
+      color: #334155;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <div class="shield">
+      <svg viewBox="0 0 64 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Shield body -->
+        <path d="M32 2L6 16v20c0 16 12 28 26 34 14-6 26-18 26-34V16L32 2z"
+              fill="url(#shield-grad)" stroke="#38bdf8" stroke-width="1.5" opacity="0.9"/>
+        <!-- 5G wave lines -->
+        <path d="M22 36c0-6 4-10 10-10s10 4 10 10" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.9"/>
+        <path d="M18 32c0-8 6-14 14-14s14 6 14 14" stroke="#38bdf8" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+        <path d="M14 28c0-10 8-18 18-18s18 8 18 18" stroke="#38bdf8" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.3"/>
+        <!-- Center dot -->
+        <circle cx="32" cy="36" r="3" fill="#38bdf8"/>
+        <defs>
+          <linearGradient id="shield-grad" x1="32" y1="2" x2="32" y2="70" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1e293b"/>
+            <stop offset="100%" stop-color="#0f172a"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <div class="app-name">VulnScan5G</div>
+  <div class="app-subtitle">Vulnerability Scanner</div>
+
+  <div class="loader-track">
+    <div class="loader-bar"></div>
+  </div>
+
+  <div class="status">Initializing analysis engine…</div>
+  <div class="version">v1.0.0</div>
+</body>
+</html>

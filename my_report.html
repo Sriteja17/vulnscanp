@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VulnScan5G Report</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f0;padding:2rem}
+h1{font-size:1.8rem;margin-bottom:.5rem;color:#38bdf8}
+.summary{display:flex;gap:1rem;margin:1.5rem 0;flex-wrap:wrap}
+.card{background:#1e293b;border-radius:12px;padding:1rem 1.5rem;min-width:120px;text-align:center;border:1px solid #334155}
+.card .num{font-size:2rem;font-weight:700}
+.critical .num{color:#ef4444} .high .num{color:#f97316} .medium .num{color:#eab308} .low .num{color:#38bdf8}
+table{width:100%;border-collapse:collapse;margin-top:1.5rem;background:#1e293b;border-radius:12px;overflow:hidden}
+th{background:#334155;padding:.75rem 1rem;text-align:left;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em}
+td{padding:.65rem 1rem;border-bottom:1px solid #334155;font-size:.9rem}
+tr:hover td{background:#263347}
+.sev{padding:2px 10px;border-radius:6px;font-weight:600;font-size:.8rem;text-transform:uppercase}
+.sev-critical{background:#7f1d1d;color:#fca5a5} .sev-high{background:#7c2d12;color:#fdba74}
+.sev-medium{background:#713f12;color:#fde047} .sev-low{background:#164e63;color:#67e8f9}
+.sev-info{background:#1e293b;color:#94a3b8}
+footer{margin-top:2rem;color:#64748b;font-size:.8rem;text-align:center}
+</style></head><body>
+<h1>&#128737; VulnScan5G — Vulnerability Report</h1>
+<p style="color:#94a3b8">Target: C:\Users\thodu\OneDrive\Desktop\OMO\tests &nbsp;|&nbsp; Files: 34 &nbsp;|&nbsp; Duration: 0.26s</p>
+<div class="summary">
+  <div class="card critical"><div class="num">8</div><div>Critical</div></div>
+  <div class="card high"><div class="num">41</div><div>High</div></div>
+  <div class="card medium"><div class="num">4</div><div>Medium</div></div>
+  <div class="card low"><div class="num">10</div><div>Low</div></div>
+</div>
+<table><thead><tr><th>#</th><th>Severity</th><th>Rule</th><th>CWE</th><th>File</th><th>Line</th><th>Vulnerability</th><th>Recommendation</th></tr></thead>
+<tbody><tr><td>1</td><td><span class="sev sev-critical">critical</span></td><td>BOF-001</td><td>CWE-242</td><td>basic.c</td><td>5</td><td>gets() usage</td><td>Replace with fgets(buf, sizeof(buf), stdin)</td></tr>
+<tr><td>2</td><td><span class="sev sev-critical">critical</span></td><td>BOF-001</td><td>CWE-242</td><td>gets.c</td><td>5</td><td>gets() usage</td><td>Replace with fgets(buf, sizeof(buf), stdin)</td></tr>
+<tr><td>3</td><td><span class="sev sev-critical">critical</span></td><td>UAF-002</td><td>CWE-415</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_53d.c</td><td>14</td><td>Potential double free</td><td>Set pointer to NULL after first free</td></tr>
+<tr><td>4</td><td><span class="sev sev-critical">critical</span></td><td>BOF-001</td><td>CWE-242</td><td>CWE242_Use_of_Inherently_Dangerous_Function__basic_01.c</td><td>17</td><td>gets() usage</td><td>Replace with fgets(buf, sizeof(buf), stdin)</td></tr>
+<tr><td>5</td><td><span class="sev sev-critical">critical</span></td><td>BOF-001</td><td>CWE-242</td><td>CWE242_Use_of_Inherently_Dangerous_Function__basic_02.c</td><td>19</td><td>gets() usage</td><td>Replace with fgets(buf, sizeof(buf), stdin)</td></tr>
+<tr><td>6</td><td><span class="sev sev-critical">critical</span></td><td>BOF-001</td><td>CWE-242</td><td>CWE242_Use_of_Inherently_Dangerous_Function__basic_08.c</td><td>30</td><td>gets() usage</td><td>Replace with fgets(buf, sizeof(buf), stdin)</td></tr>
+<tr><td>7</td><td><span class="sev sev-critical">critical</span></td><td>BOF-001</td><td>CWE-242</td><td>CWE242_Use_of_Inherently_Dangerous_Function__basic_09.c</td><td>19</td><td>gets() usage</td><td>Replace with fgets(buf, sizeof(buf), stdin)</td></tr>
+<tr><td>8</td><td><span class="sev sev-critical">critical</span></td><td>BOF-001</td><td>CWE-242</td><td>CWE242_Use_of_Inherently_Dangerous_Function__basic_11.c</td><td>19</td><td>gets() usage</td><td>Replace with fgets(buf, sizeof(buf), stdin)</td></tr>
+<tr><td>9</td><td><span class="sev sev-high">high</span></td><td>BOF-002</td><td>CWE-120</td><td>basic.c</td><td>7</td><td>strcpy() without bounds</td><td>Use strncpy() or strlcpy() with explicit size</td></tr>
+<tr><td>10</td><td><span class="sev sev-high">high</span></td><td>BOF-005</td><td>CWE-120</td><td>basic.c</td><td>11</td><td>scanf %s without width</td><td>Use %Ns with explicit width, e.g. %255s</td></tr>
+<tr><td>11</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-gets</td><td>CWE-120</td><td>basic.c</td><td>48</td><td>unsafe_gets()</td><td>Replace gets() with bounds-checked alternative</td></tr>
+<tr><td>12</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-strcpy</td><td>CWE-120</td><td>basic.c</td><td>50</td><td>unsafe_strcpy()</td><td>Replace strcpy() with bounds-checked alternative</td></tr>
+<tr><td>13</td><td><span class="sev sev-high">high</span></td><td>AST-INP-scanf</td><td>CWE-120</td><td>basic.c</td><td>54</td><td>unsafe_input_scanf()</td><td>Validate/limit input size</td></tr>
+<tr><td>14</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-gets</td><td>CWE-120</td><td>gets.c</td><td>48</td><td>unsafe_gets()</td><td>Replace gets() with bounds-checked alternative</td></tr>
+<tr><td>15</td><td><span class="sev sev-high">high</span></td><td>BOF-002</td><td>CWE-120</td><td>strcpy.c</td><td>5</td><td>strcpy() without bounds</td><td>Use strncpy() or strlcpy() with explicit size</td></tr>
+<tr><td>16</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-strcpy</td><td>CWE-120</td><td>strcpy.c</td><td>48</td><td>unsafe_strcpy()</td><td>Replace strcpy() with bounds-checked alternative</td></tr>
+<tr><td>17</td><td><span class="sev sev-high">high</span></td><td>BOF-007</td><td>CWE-120</td><td>CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cpy_51b.c</td><td>17</td><td>wcscpy() without bounds</td><td>Use wcsncpy() with explicit size</td></tr>
+<tr><td>18</td><td><span class="sev sev-high">high</span></td><td>BOF-007</td><td>CWE-120</td><td>CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cpy_51b.c</td><td>32</td><td>wcscpy() without bounds</td><td>Use wcsncpy() with explicit size</td></tr>
+<tr><td>19</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-wcscpy</td><td>CWE-120</td><td>CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cpy_51b.c</td><td>53</td><td>unsafe_wcscpy()</td><td>Replace wcscpy() with bounds-checked alternative</td></tr>
+<tr><td>20</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-wcscpy</td><td>CWE-120</td><td>CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cpy_51b.c</td><td>66</td><td>unsafe_wcscpy()</td><td>Replace wcscpy() with bounds-checked alternative</td></tr>
+<tr><td>21</td><td><span class="sev sev-high">high</span></td><td>BOF-007</td><td>CWE-120</td><td>CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cpy_64b.c</td><td>19</td><td>wcscpy() without bounds</td><td>Use wcsncpy() with explicit size</td></tr>
+<tr><td>22</td><td><span class="sev sev-high">high</span></td><td>BOF-007</td><td>CWE-120</td><td>CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cpy_64b.c</td><td>38</td><td>wcscpy() without bounds</td><td>Use wcsncpy() with explicit size</td></tr>
+<tr><td>23</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-wcscpy</td><td>CWE-120</td><td>CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cpy_64b.c</td><td>57</td><td>unsafe_wcscpy()</td><td>Replace wcscpy() with bounds-checked alternative</td></tr>
+<tr><td>24</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-wcscpy</td><td>CWE-120</td><td>CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cpy_64b.c</td><td>74</td><td>unsafe_wcscpy()</td><td>Replace wcscpy() with bounds-checked alternative</td></tr>
+<tr><td>25</td><td><span class="sev sev-high">high</span></td><td>UAF-001</td><td>CWE-416</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_double_32.c</td><td>28</td><td>free() without NULL assignment</td><td>Set pointer to NULL immediately after free()</td></tr>
+<tr><td>26</td><td><span class="sev sev-high">high</span></td><td>UAF-001</td><td>CWE-416</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_double_32.c</td><td>56</td><td>free() without NULL assignment</td><td>Set pointer to NULL immediately after free()</td></tr>
+<tr><td>27</td><td><span class="sev sev-high">high</span></td><td>UAF-001</td><td>CWE-416</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_double_61a.c</td><td>19</td><td>free() without NULL assignment</td><td>Set pointer to NULL immediately after free()</td></tr>
+<tr><td>28</td><td><span class="sev sev-high">high</span></td><td>UAF-001</td><td>CWE-416</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_double_61a.c</td><td>37</td><td>free() without NULL assignment</td><td>Set pointer to NULL immediately after free()</td></tr>
+<tr><td>29</td><td><span class="sev sev-high">high</span></td><td>UAF-001</td><td>CWE-416</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_53d.c</td><td>14</td><td>free() without NULL assignment</td><td>Set pointer to NULL immediately after free()</td></tr>
+<tr><td>30</td><td><span class="sev sev-high">high</span></td><td>UAF-001</td><td>CWE-416</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_53d.c</td><td>26</td><td>free() without NULL assignment</td><td>Set pointer to NULL immediately after free()</td></tr>
+<tr><td>31</td><td><span class="sev sev-high">high</span></td><td>UAF-001</td><td>CWE-416</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_61a.c</td><td>19</td><td>free() without NULL assignment</td><td>Set pointer to NULL immediately after free()</td></tr>
+<tr><td>32</td><td><span class="sev sev-high">high</span></td><td>UAF-001</td><td>CWE-416</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_61a.c</td><td>37</td><td>free() without NULL assignment</td><td>Set pointer to NULL immediately after free()</td></tr>
+<tr><td>33</td><td><span class="sev sev-high">high</span></td><td>BOF-002</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_vprintf_10.c</td><td>165</td><td>strcpy() without bounds</td><td>Use strncpy() or strlcpy() with explicit size</td></tr>
+<tr><td>34</td><td><span class="sev sev-high">high</span></td><td>BOF-002</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_vprintf_10.c</td><td>193</td><td>strcpy() without bounds</td><td>Use strncpy() or strlcpy() with explicit size</td></tr>
+<tr><td>35</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-strcpy</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_vprintf_10.c</td><td>199</td><td>unsafe_strcpy()</td><td>Replace strcpy() with bounds-checked alternative</td></tr>
+<tr><td>36</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-strcpy</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_vprintf_10.c</td><td>227</td><td>unsafe_strcpy()</td><td>Replace strcpy() with bounds-checked alternative</td></tr>
+<tr><td>37</td><td><span class="sev sev-high">high</span></td><td>BOF-002</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_w32_vsnprintf_03.c</td><td>173</td><td>strcpy() without bounds</td><td>Use strncpy() or strlcpy() with explicit size</td></tr>
+<tr><td>38</td><td><span class="sev sev-high">high</span></td><td>BOF-002</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_w32_vsnprintf_03.c</td><td>203</td><td>strcpy() without bounds</td><td>Use strncpy() or strlcpy() with explicit size</td></tr>
+<tr><td>39</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-strcpy</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_w32_vsnprintf_03.c</td><td>207</td><td>unsafe_strcpy()</td><td>Replace strcpy() with bounds-checked alternative</td></tr>
+<tr><td>40</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-strcpy</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_w32_vsnprintf_03.c</td><td>237</td><td>unsafe_strcpy()</td><td>Replace strcpy() with bounds-checked alternative</td></tr>
+<tr><td>41</td><td><span class="sev sev-high">high</span></td><td>BOF-002</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_w32_vsnprintf_34.c</td><td>88</td><td>strcpy() without bounds</td><td>Use strncpy() or strlcpy() with explicit size</td></tr>
+<tr><td>42</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-strcpy</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_w32_vsnprintf_34.c</td><td>122</td><td>unsafe_strcpy()</td><td>Replace strcpy() with bounds-checked alternative</td></tr>
+<tr><td>43</td><td><span class="sev sev-high">high</span></td><td>BOF-002</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_w32_vsnprintf_53a.c</td><td>56</td><td>strcpy() without bounds</td><td>Use strncpy() or strlcpy() with explicit size</td></tr>
+<tr><td>44</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-strcpy</td><td>CWE-120</td><td>CWE134_Uncontrolled_Format_String__char_environment_w32_vsnprintf_53a.c</td><td>90</td><td>unsafe_strcpy()</td><td>Replace strcpy() with bounds-checked alternative</td></tr>
+<tr><td>45</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-gets</td><td>CWE-120</td><td>CWE242_Use_of_Inherently_Dangerous_Function__basic_01.c</td><td>55</td><td>unsafe_gets()</td><td>Replace gets() with bounds-checked alternative</td></tr>
+<tr><td>46</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-gets</td><td>CWE-120</td><td>CWE242_Use_of_Inherently_Dangerous_Function__basic_02.c</td><td>57</td><td>unsafe_gets()</td><td>Replace gets() with bounds-checked alternative</td></tr>
+<tr><td>47</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-gets</td><td>CWE-120</td><td>CWE242_Use_of_Inherently_Dangerous_Function__basic_08.c</td><td>68</td><td>unsafe_gets()</td><td>Replace gets() with bounds-checked alternative</td></tr>
+<tr><td>48</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-gets</td><td>CWE-120</td><td>CWE242_Use_of_Inherently_Dangerous_Function__basic_09.c</td><td>57</td><td>unsafe_gets()</td><td>Replace gets() with bounds-checked alternative</td></tr>
+<tr><td>49</td><td><span class="sev sev-high">high</span></td><td>AST-BOF-gets</td><td>CWE-120</td><td>CWE242_Use_of_Inherently_Dangerous_Function__basic_11.c</td><td>57</td><td>unsafe_gets()</td><td>Replace gets() with bounds-checked alternative</td></tr>
+<tr><td>50</td><td><span class="sev sev-medium">medium</span></td><td>AST-NULL-malloc</td><td>CWE-476</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_double_32.c</td><td>58</td><td>unchecked_malloc()</td><td>Always check malloc() return for NULL</td></tr>
+<tr><td>51</td><td><span class="sev sev-medium">medium</span></td><td>AST-NULL-malloc</td><td>CWE-476</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_double_32.c</td><td>84</td><td>unchecked_malloc()</td><td>Always check malloc() return for NULL</td></tr>
+<tr><td>52</td><td><span class="sev sev-medium">medium</span></td><td>AST-NULL-malloc</td><td>CWE-476</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_54a.c</td><td>57</td><td>unchecked_malloc()</td><td>Always check malloc() return for NULL</td></tr>
+<tr><td>53</td><td><span class="sev sev-medium">medium</span></td><td>AST-NULL-malloc</td><td>CWE-476</td><td>CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_54a.c</td><td>75</td><td>unchecked_malloc()</td><td>Always check malloc() return for NULL</td></tr>
+<tr><td>54</td><td><span class="sev sev-low">low</span></td><td>UNINIT-001</td><td>CWE-908</td><td>basic.c</td><td>4</td><td>Uninitialized stack buffer</td><td>Initialise with = {0} or memset()</td></tr>
+<tr><td>55</td><td><span class="sev sev-low">low</span></td><td>UNINIT-001</td><td>CWE-908</td><td>basic.c</td><td>6</td><td>Uninitialized stack buffer</td><td>Initialise with = {0} or memset()</td></tr>
+<tr><td>56</td><td><span class="sev sev-low">low</span></td><td>UNINIT-001</td><td>CWE-908</td><td>basic.c</td><td>10</td><td>Uninitialized stack buffer</td><td>Initialise with = {0} or memset()</td></tr>
+<tr><td>57</td><td><span class="sev sev-low">low</span></td><td>UNINIT-001</td><td>CWE-908</td><td>gets.c</td><td>4</td><td>Uninitialized stack buffer</td><td>Initialise with = {0} or memset()</td></tr>
+<tr><td>58</td><td><span class="sev sev-low">low</span></td><td>UNINIT-001</td><td>CWE-908</td><td>strcpy.c</td><td>4</td><td>Uninitialized stack buffer</td><td>Initialise with = {0} or memset()</td></tr>
+<tr><td>59</td><td><span class="sev sev-low">low</span></td><td>UNINIT-001</td><td>CWE-908</td><td>CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_64a.c</td><td>22</td><td>Uninitialized stack buffer</td><td>Initialise with = {0} or memset()</td></tr>
+<tr><td>60</td><td><span class="sev sev-low">low</span></td><td>UNINIT-001</td><td>CWE-908</td><td>CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_64a.c</td><td>23</td><td>Uninitialized stack buffer</td><td>Initialise with = {0} or memset()</td></tr>
+<tr><td>61</td><td><span class="sev sev-low">low</span></td><td>UNINIT-001</td><td>CWE-908</td><td>CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_64a.c</td><td>40</td><td>Uninitialized stack buffer</td><td>Initialise with = {0} or memset()</td></tr>
+<tr><td>62</td><td><span class="sev sev-low">low</span></td><td>UNINIT-001</td><td>CWE-908</td><td>CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_64a.c</td><td>41</td><td>Uninitialized stack buffer</td><td>Initialise with = {0} or memset()</td></tr>
+<tr><td>63</td><td><span class="sev sev-low">low</span></td><td>UNINIT-001</td><td>CWE-908</td><td>safe_array.c</td><td>2</td><td>Uninitialized stack buffer</td><td>Initialise with = {0} or memset()</td></tr></tbody></table>
+<footer>Generated by VulnScan5G v1.0.0</footer>
+</body></html>

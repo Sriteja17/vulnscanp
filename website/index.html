@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VulnScan5G — AI-Powered 5G Vulnerability Scanner</title>
+  <meta name="description" content="Detect and auto-fix security vulnerabilities in C/C++ codebases powering 5G network stacks. 25 detection rules, 3 analysis engines, local LLM-powered reasoning.">
+  <meta name="keywords" content="vulnerability scanner, 5G security, C/C++ analysis, static analysis, cybersecurity, code security">
+  <meta name="author" content="VulnScan5G Team">
+  <meta property="og:title" content="VulnScan5G — AI-Powered 5G Vulnerability Scanner">
+  <meta property="og:description" content="Detect and auto-fix security vulnerabilities in C/C++ codebases powering 5G network stacks.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icon.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="navbar-brand">
+        <img src="icon.png" alt="VulnScan5G" width="32" height="32">
+        VulnScan5G
+      </a>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#coverage">Coverage</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li>
+          <a href="#download" class="nav-download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path d="M10 3a1 1 0 011 1v7.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 11.586V4a1 1 0 011-1z"/><path d="M3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg>
+            Download
+          </a>
+        </li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Version 1.0 — Now Available
+      </div>
+
+      <h1>
+        Security analysis for<br>
+        <span class="gradient-text">5G-critical code</span>
+      </h1>
+
+      <p class="hero-description">
+        Detect buffer overflows, format string attacks, command injections, and 20+ vulnerability classes in C/C++ codebases. Powered by three analysis engines and local LLM reasoning.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#download" class="btn-primary" id="heroDownloadBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10 3a1 1 0 011 1v7.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 11.586V4a1 1 0 011-1z"/><path d="M3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg>
+          Download for Windows
+        </a>
+        <a href="https://github.com/your-repo/VulnScan5G" class="btn-secondary" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          View Source
+        </a>
+      </div>
+
+      <p class="hero-meta">
+        Windows 10+ <span>·</span> 101 MB <span>·</span> Free &amp; Open Source
+      </p>
+    </div>
+
+    <div class="hero-screenshot animate-on-scroll">
+      <img src="app-screenshot.png" alt="VulnScan5G desktop application showing vulnerability scan results" width="960" height="540" loading="eager">
+    </div>
+  </section>
+
+  <!-- ═══ STATS BANNER ═════════════════════════════════════════ -->
+  <div class="stats-banner">
+    <div class="container">
+      <div class="stats-grid animate-on-scroll stagger-children">
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-value">25</div>
+          <div class="stat-label">Detection Rules</div>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Analysis Engines</div>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-value">10+</div>
+          <div class="stat-label">CWE Categories</div>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Local Processing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FEATURES ═════════════════════════════════════════════ -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header-center animate-on-scroll">
+        <div class="section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
+          Features
+        </div>
+        <h2 class="section-title">Built for security teams</h2>
+        <p class="section-subtitle">
+          Everything you need to find, understand, and fix vulnerabilities in C/C++ code — from quick scans to AI-assisted remediation.
+        </p>
+      </div>
+
+      <div class="features-grid stagger-children">
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon blue">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <h3>Triple-Engine Detection</h3>
+          <p>Regex pattern matching, pycparser AST analysis, and tree-sitter parsing work together to minimize false negatives across C and C++ code.</p>
+        </div>
+
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon purple">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h3>LLM-Powered Reasoning</h3>
+          <p>Optional local AI reasoning via Ollama confirms or rejects findings, explains vulnerabilities in context, and generates targeted code fixes.</p>
+        </div>
+
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon green">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Auto-Fix Generation</h3>
+          <p>One-click fix generation produces patched source files. Review diffs side-by-side and apply fixes selectively or in bulk.</p>
+        </div>
+
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon red">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>5G-Focused Rules</h3>
+          <p>Purpose-built for the vulnerability classes that matter most in 5G infrastructure — buffer overflows, race conditions, command injection, and more.</p>
+        </div>
+
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon orange">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>Rich Reporting</h3>
+          <p>Export findings as interactive HTML dashboards or structured JSON. Filter by severity, search across rules, and share results with your team.</p>
+        </div>
+
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon yellow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2zm10-10V7a4 4 0 0 0-8 0v4h8z"/></svg>
+          </div>
+          <h3>Fully Offline</h3>
+          <p>All analysis runs locally on your machine. Source code never leaves your environment — no cloud uploads, no external APIs required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DETECTION COVERAGE ═══════════════════════════════════ -->
+  <section id="coverage" class="coverage-section">
+    <div class="container">
+      <div class="section-header-center animate-on-scroll">
+        <div class="section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944z" clip-rule="evenodd"/></svg>
+          Detection Coverage
+        </div>
+        <h2 class="section-title">25 rules across 10+ CWE categories</h2>
+        <p class="section-subtitle">
+          Comprehensive coverage of the most critical vulnerability classes found in C and C++ codebases.
+        </p>
+      </div>
+
+      <div class="coverage-grid stagger-children">
+        <div class="coverage-item animate-on-scroll">
+          <span class="coverage-cwe critical">CWE-120</span>
+          <div class="coverage-info">
+            <h4>Buffer Overflow</h4>
+            <p>gets(), strcpy(), sprintf(), scanf %s, memcpy with variable sizes</p>
+          </div>
+        </div>
+        <div class="coverage-item animate-on-scroll">
+          <span class="coverage-cwe critical">CWE-78</span>
+          <div class="coverage-info">
+            <h4>Command Injection</h4>
+            <p>system(), popen() with user-controlled input</p>
+          </div>
+        </div>
+        <div class="coverage-item animate-on-scroll">
+          <span class="coverage-cwe high">CWE-134</span>
+          <div class="coverage-info">
+            <h4>Format String</h4>
+            <p>printf(var), fprintf(f, var) with non-literal format strings</p>
+          </div>
+        </div>
+        <div class="coverage-item animate-on-scroll">
+          <span class="coverage-cwe high">CWE-416</span>
+          <div class="coverage-info">
+            <h4>Use-After-Free</h4>
+            <p>free() without NULL assignment, double free detection</p>
+          </div>
+        </div>
+        <div class="coverage-item animate-on-scroll">
+          <span class="coverage-cwe high">CWE-190</span>
+          <div class="coverage-info">
+            <h4>Integer Overflow</h4>
+            <p>malloc(a * b), realloc(p, n + m) without overflow checks</p>
+          </div>
+        </div>
+        <div class="coverage-item animate-on-scroll">
+          <span class="coverage-cwe medium">CWE-367</span>
+          <div class="coverage-info">
+            <h4>Race Conditions</h4>
+            <p>access() then open(), TOCTOU pattern detection</p>
+          </div>
+        </div>
+        <div class="coverage-item animate-on-scroll">
+          <span class="coverage-cwe medium">CWE-476</span>
+          <div class="coverage-info">
+            <h4>NULL Dereference</h4>
+            <p>Unchecked malloc(), realloc() return values</p>
+          </div>
+        </div>
+        <div class="coverage-item animate-on-scroll">
+          <span class="coverage-cwe medium">CWE-401</span>
+          <div class="coverage-info">
+            <h4>Memory Leaks</h4>
+            <p>malloc in loops without corresponding free</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═════════════════════════════════════════ -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-header-center animate-on-scroll">
+        <div class="section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z" clip-rule="evenodd"/></svg>
+          How It Works
+        </div>
+        <h2 class="section-title">Seven-stage analysis pipeline</h2>
+        <p class="section-subtitle">
+          From file discovery to remediation — each stage is designed for accuracy and speed.
+        </p>
+      </div>
+
+      <div class="pipeline-steps animate-on-scroll stagger-children">
+        <div class="pipeline-step animate-on-scroll">
+          <div class="step-number">1</div>
+          <h4>Ingest</h4>
+          <p>Discover .c, .cpp, .h, .hpp files recursively</p>
+        </div>
+        <div class="pipeline-step animate-on-scroll">
+          <div class="step-number">2</div>
+          <h4>Preprocess</h4>
+          <p>Strip comments, normalize whitespace</p>
+        </div>
+        <div class="pipeline-step animate-on-scroll">
+          <div class="step-number">3</div>
+          <h4>Detect</h4>
+          <p>Regex + AST + tree-sitter scanning</p>
+        </div>
+        <div class="pipeline-step animate-on-scroll">
+          <div class="step-number">4</div>
+          <h4>Merge</h4>
+          <p>Deduplicate, assign CWEs, score</p>
+        </div>
+        <div class="pipeline-step animate-on-scroll">
+          <div class="step-number">5</div>
+          <h4>Reason</h4>
+          <p>LLM confirms or rejects findings</p>
+        </div>
+        <div class="pipeline-step animate-on-scroll">
+          <div class="step-number">6</div>
+          <h4>Fix</h4>
+          <p>Generate patches automatically</p>
+        </div>
+        <div class="pipeline-step animate-on-scroll">
+          <div class="step-number">7</div>
+          <h4>Report</h4>
+          <p>Console, JSON, or HTML output</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DOWNLOAD ═════════════════════════════════════════════ -->
+  <section id="download" class="download-section">
+    <div class="container">
+      <div class="download-card animate-on-scroll">
+        <div class="section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          Download
+        </div>
+        <h2 class="section-title">Get VulnScan5G</h2>
+        <p class="section-subtitle">
+          Free and open source. Install on Windows and start scanning in under a minute.
+        </p>
+
+        <div class="download-actions">
+          <a href="VulnScan5G Setup 1.0.0.exe" class="btn-primary" id="mainDownloadBtn" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10 3a1 1 0 011 1v7.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 11.586V4a1 1 0 011-1z"/><path d="M3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg>
+            Download VulnScan5G v1.0.0
+          </a>
+
+          <div class="download-info">
+            <div class="download-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5z" clip-rule="evenodd"/></svg>
+              Windows 10+
+            </div>
+            <div class="download-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/></svg>
+              v1.0.0 · 101 MB
+            </div>
+            <div class="download-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              MIT License
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="icon.png" alt="" width="24" height="24">
+        &copy; 2026 VulnScan5G
+      </div>
+      <ul class="footer-links">
+        <li><a href="https://github.com/your-repo/VulnScan5G" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://github.com/your-repo/VulnScan5G/issues" target="_blank" rel="noopener">Report Issue</a></li>
+        <li><a href="https://github.com/your-repo/VulnScan5G/blob/main/LICENSE" target="_blank" rel="noopener">License</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ══════════════════════════════════════════════ -->
+  <script src="main.js"></script>
+</body>
+</html>

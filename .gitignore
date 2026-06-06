@@ -1,0 +1,37 @@
+# ── Python ────────────────────────────────────
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+venv/
+
+# ── PyInstaller build output ──────────────────
+dist/
+build/
+*.spec.bak
+
+# ── Node / Electron ──────────────────────────
+node_modules/
+electron-app/node_modules/
+electron-app/release/
+electron-app/dist/
+package-lock.json
+
+# ── Website (don't push the 101MB .exe) ──────
+website/VulnScan5G Setup 1.0.0.exe
+
+# ── VulnScan5G output files ──────────────────
+*_fixed.c
+*_fixed.cpp
+_vulnscan5g_fixed/
+reports/
+*.log
+
+# ── OS / Editor ──────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+.vscode/
+.idea/

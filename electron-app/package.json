@@ -1,0 +1,59 @@
+{
+  "name": "vulnscan5g-desktop",
+  "version": "1.0.0",
+  "description": "VulnScan5G – AI-powered 5G network vulnerability scanner desktop application",
+  "main": "main.js",
+  "author": "VulnScan5G Team",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win --x64",
+    "pack": "electron-builder --dir"
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.vulnscan5g.desktop",
+    "productName": "VulnScan5G",
+    "copyright": "Copyright © 2026 VulnScan5G Team",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "assets/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "../dist/vulnscan5g-server",
+        "to": "vulnscan5g-server",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "VulnScan5G",
+      "runAfterFinish": true
+    }
+  }
+}

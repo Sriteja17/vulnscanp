@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VulnScan5G</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Custom titlebar -->
+    <div class="titlebar" id="titlebar">
+        <div class="titlebar-drag">
+            <span class="titlebar-icon">🛡️</span>
+            <span class="titlebar-title">VulnScan5G</span>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">🛡️</div>
+                <span class="logo-text">VulnScan5G</span>
+            </div>
+            <div class="sidebar-nav">
+                <button class="nav-item active" data-page="home" id="nav-home">
+                    <span class="nav-icon">🏠</span><span class="nav-label">Home</span>
+                </button>
+                <button class="nav-item" data-page="scan" id="nav-scan">
+                    <span class="nav-icon">⚡</span><span class="nav-label">Scan</span>
+                </button>
+                <button class="nav-item" data-page="rules" id="nav-rules">
+                    <span class="nav-icon">📋</span><span class="nav-label">Rules</span>
+                </button>
+                <button class="nav-item" data-page="settings" id="nav-settings">
+                    <span class="nav-icon">⚙️</span><span class="nav-label">Settings</span>
+                </button>
+            </div>
+            <div class="sidebar-footer">
+                <div class="llm-indicator" id="llm-indicator">
+                    <span class="llm-dot offline" id="llm-dot"></span>
+                    <span class="llm-label" id="llm-label">LLM Offline</span>
+                </div>
+                <div class="version">v1.0.0</div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content" id="content">
+
+            <!-- ═══ HOME PAGE ═══ -->
+            <div class="page active" id="page-home">
+                <div class="page-header">
+                    <h1 class="page-title">Welcome to <span class="gradient-text">VulnScan5G</span></h1>
+                    <p class="page-subtitle">CLI Vulnerability Detection & Auto-Fix for C/C++</p>
+                </div>
+                <div class="hero-cards">
+                    <div class="hero-card">
+                        <div class="hero-card-icon">🔍</div>
+                        <h3>27 Detection Rules</h3>
+                        <p>Buffer overflow, format string, command injection, use-after-free, and more across 10+ CWE categories</p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-card-icon">🧠</div>
+                        <h3>3 Detection Engines</h3>
+                        <p>Regex, AST (pycparser), and Tree-sitter work in parallel for defense-in-depth</p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-card-icon">🔧</div>
+                        <h3>Auto-Fix Engine</h3>
+                        <p>Two-tier patching: deterministic templates + AI-generated fixes via local LLM</p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-card-icon">🔒</div>
+                        <h3>100% Offline</h3>
+                        <p>All processing on your machine. Source code never leaves your device.</p>
+                    </div>
+                </div>
+
+                <div class="quick-scan-section">
+                    <h2>Quick Scan</h2>
+                    <div class="quick-scan-row">
+                        <div class="path-input-group">
+                            <input type="text" class="path-input" id="quick-path" placeholder="Select a folder or file to scan..." readonly>
+                            <button class="btn btn-secondary" id="quick-browse-folder" onclick="browseFolderQuick()">📂 Folder</button>
+                            <button class="btn btn-secondary" id="quick-browse-file" onclick="browseFileQuick()">📄 File</button>
+                        </div>
+                        <button class="btn btn-primary btn-glow" id="quick-scan-btn" onclick="startQuickScan()">⚡ Scan Now</button>
+                    </div>
+                </div>
+
+                <div class="stats-row" id="home-stats">
+                    <div class="stat-card"><div class="stat-value">27</div><div class="stat-label">Detection Rules</div></div>
+                    <div class="stat-card"><div class="stat-value">10+</div><div class="stat-label">CWE Categories</div></div>
+                    <div class="stat-card"><div class="stat-value">3</div><div class="stat-label">Scan Engines</div></div>
+                    <div class="stat-card"><div class="stat-value">7</div><div class="stat-label">Template Fixes</div></div>
+                </div>
+            </div>
+
+            <!-- ═══ SCAN PAGE ═══ -->
+            <div class="page" id="page-scan">
+                <div class="page-header">
+                    <h1 class="page-title">🔍 Vulnerability Scanner</h1>
+                </div>
+
+                <!-- Scan Controls -->
+                <div class="scan-controls card" id="scan-controls">
+                    <div class="control-row">
+                        <div class="path-input-group full-width">
+                            <input type="text" class="path-input" id="scan-path" placeholder="Select target folder or file..." readonly>
+                            <button class="btn btn-secondary" onclick="browseFolder()">📂 Folder</button>
+                            <button class="btn btn-secondary" onclick="browseFile()">📄 File</button>
+                        </div>
+                    </div>
+                    <div class="control-row options-row">
+                        <div class="toggle-group">
+                            <label class="toggle" id="toggle-llm">
+                                <input type="checkbox" id="opt-llm">
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-label">🧠 LLM Reasoning</span>
+                            </label>
+                            <label class="toggle">
+                                <input type="checkbox" id="opt-fix">
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-label">🔧 Auto-Fix</span>
+                            </label>
+                        </div>
+                        <div class="select-group">
+                            <label class="select-label">Severity:</label>
+                            <select class="select-input" id="opt-severity">
+                                <option value="low">Low & Above</option>
+                                <option value="medium">Medium & Above</option>
+                                <option value="high">High & Above</option>
+                                <option value="critical">Critical Only</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary btn-glow btn-large" id="scan-btn" onclick="startScan()">
+                            <span class="btn-icon">⚡</span> Start Scan
+                        </button>
+                    </div>
+                    <!-- LLM warning -->
+                    <div class="llm-warning hidden" id="llm-warning">
+                        ⚠️ Ollama not detected. LLM Reasoning and Tier 2 Auto-Fix will be skipped. <a href="#" onclick="navigateTo('settings');return false;">Set up in Settings</a>
+                    </div>
+                </div>
+
+                <!-- Scan Progress -->
+                <div class="scan-progress card hidden" id="scan-progress">
+                    <div class="progress-header">
+                        <span class="progress-title">🔄 Scanning in progress...</span>
+                        <span class="progress-spinner"></span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                    <div class="progress-detail" id="progress-detail">Initializing pipeline...</div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="scan-results hidden" id="scan-results">
+                    <!-- Summary Cards -->
+                    <div class="severity-cards">
+                        <div class="severity-card critical"><div class="sev-count" id="cnt-critical">0</div><div class="sev-label">Critical</div></div>
+                        <div class="severity-card high"><div class="sev-count" id="cnt-high">0</div><div class="sev-label">High</div></div>
+                        <div class="severity-card medium"><div class="sev-count" id="cnt-medium">0</div><div class="sev-label">Medium</div></div>
+                        <div class="severity-card low"><div class="sev-count" id="cnt-low">0</div><div class="sev-label">Low</div></div>
+                        <div class="severity-card info"><div class="sev-count" id="cnt-info">0</div><div class="sev-label">Info</div></div>
+                    </div>
+
+                    <!-- Scan Meta -->
+                    <div class="scan-meta card">
+                        <span>📁 <strong id="meta-files">0</strong> files scanned</span>
+                        <span>⏱️ <strong id="meta-duration">0</strong>s</span>
+                        <span>🔍 <strong id="meta-total">0</strong> findings</span>
+                        <span class="hidden" id="meta-fixed">🔧 <strong id="meta-fixed-count">0</strong> fixes applied</span>
+                        <span class="hidden" id="meta-fixed-dir">📂 Saved to: <strong id="meta-fixed-path"></strong></span>
+                        <div class="export-btns">
+                            <button class="btn btn-sm" onclick="exportJSON()">📄 JSON</button>
+                            <button class="btn btn-sm" onclick="exportHTML()">🌐 HTML</button>
+                        </div>
+                    </div>
+
+                    <!-- Findings Filter -->
+                    <div class="findings-filter card">
+                        <input type="text" class="search-input" id="findings-search" placeholder="🔍 Search findings..." oninput="filterFindings()">
+                        <select class="select-input" id="findings-severity-filter" onchange="filterFindings()">
+                            <option value="all">All Severities</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                        <select class="select-input" id="findings-file-filter" onchange="filterFindings()">
+                            <option value="all">All Files</option>
+                        </select>
+                    </div>
+
+                    <!-- Findings Table -->
+                    <div class="findings-table-container card">
+                        <table class="findings-table" id="findings-table">
+                            <thead>
+                                <tr>
+                                    <th>File</th>
+                                    <th>Line</th>
+                                    <th>CWE</th>
+                                    <th>Severity</th>
+                                    <th>Confidence</th>
+                                    <th>Description</th>
+                                    <th>Detector</th>
+                                    <th>Fix</th>
+                                </tr>
+                            </thead>
+                            <tbody id="findings-tbody"></tbody>
+                        </table>
+                        <div class="empty-state hidden" id="no-findings">
+                            <span class="empty-icon">✅</span>
+                            <p>No vulnerabilities found! Your code looks clean.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finding Detail Modal -->
+                <div class="modal-overlay hidden" id="finding-modal" onclick="closeFindingModal(event)">
+                    <div class="modal" onclick="event.stopPropagation()">
+                        <div class="modal-header">
+                            <h3 id="modal-title">Finding Details</h3>
+                            <button class="modal-close" onclick="closeFindingModal()">&times;</button>
+                        </div>
+                        <div class="modal-body" id="modal-body"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ RULES PAGE ═══ -->
+            <div class="page" id="page-rules">
+                <div class="page-header">
+                    <h1 class="page-title">📋 Detection Rules</h1>
+                    <p class="page-subtitle">27 rules across 10+ CWE categories</p>
+                </div>
+                <div class="rules-search">
+                    <input type="text" class="search-input" id="rules-search" placeholder="🔍 Search rules by name, CWE, or description..." oninput="filterRules()">
+                </div>
+                <div class="rules-grid" id="rules-grid"></div>
+            </div>
+
+            <!-- ═══ SETTINGS PAGE ═══ -->
+            <div class="page" id="page-settings">
+                <div class="page-header">
+                    <h1 class="page-title">⚙️ Settings</h1>
+                </div>
+
+                <!-- LLM Setup -->
+                <div class="settings-section card">
+                    <h2 class="section-title">🧠 LLM Setup</h2>
+                    <p class="section-desc">Set up Ollama for AI-powered reasoning and auto-fix. Requires one-time internet.</p>
+                    <div class="setup-steps">
+                        <div class="setup-step">
+                            <div class="step-header">
+                                <span class="step-number">1</span>
+                                <span class="step-title">Install Ollama</span>
+                                <span class="step-status" id="step-install-status">⬜ Not installed</span>
+                            </div>
+                            <p class="step-desc">Downloads and installs the Ollama runtime (~100MB)</p>
+                            <button class="btn btn-primary" id="btn-install-ollama" onclick="installOllama()">📥 Download & Install</button>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-header">
+                                <span class="step-number">2</span>
+                                <span class="step-title">Download AI Model</span>
+                                <span class="step-status" id="step-pull-status">⬜ Not downloaded</span>
+                            </div>
+                            <p class="step-desc">Select a code-focused LLM and pull it locally (one-time download)</p>
+                            <div style="margin-left:40px;margin-bottom:12px">
+                                <label style="font-size:12px;color:#9898b0;display:block;margin-bottom:6px">Choose Model:</label>
+                                <select class="select-input" id="setting-model" onchange="onModelChange()" style="min-width:320px">
+                                    <optgroup label="⭐ Code Specialists (Recommended)">
+                                        <option value="deepseek-coder:6.7b">🌟 DeepSeek-Coder 6.7B — ~4GB</option>
+                                        <option value="deepseek-coder:1.3b">DeepSeek-Coder 1.3B — ~800MB</option>
+                                        <option value="deepseek-coder:33b">DeepSeek-Coder 33B — ~19GB</option>
+                                        <option value="codellama:7b">CodeLlama 7B — ~4GB</option>
+                                        <option value="codellama:13b">CodeLlama 13B — ~7GB</option>
+                                        <option value="codellama:34b">CodeLlama 34B — ~19GB</option>
+                                        <option value="qwen2.5-coder:7b">Qwen2.5-Coder 7B — ~4.5GB</option>
+                                        <option value="qwen2.5-coder:14b">Qwen2.5-Coder 14B — ~9GB</option>
+                                        <option value="qwen2.5-coder:1.5b">Qwen2.5-Coder 1.5B — ~1GB</option>
+                                        <option value="starcoder2:7b">StarCoder2 7B — ~4GB</option>
+                                        <option value="starcoder2:3b">StarCoder2 3B — ~2GB</option>
+                                        <option value="starcoder2:15b">StarCoder2 15B — ~9GB</option>
+                                    </optgroup>
+                                    <optgroup label="🧠 General + Code Capable">
+                                        <option value="llama3.1:8b">Llama 3.1 8B — ~4.7GB</option>
+                                        <option value="llama3.1:70b">Llama 3.1 70B — ~40GB</option>
+                                        <option value="mistral:7b">Mistral 7B — ~4GB</option>
+                                        <option value="mixtral:8x7b">Mixtral 8x7B — ~26GB</option>
+                                        <option value="gemma2:9b">Gemma 2 9B — ~5.4GB</option>
+                                        <option value="gemma2:27b">Gemma 2 27B — ~16GB</option>
+                                        <option value="phi3:medium">Phi-3 Medium 14B — ~8GB</option>
+                                        <option value="phi3:mini">Phi-3 Mini 3.8B — ~2.3GB</option>
+                                        <option value="command-r:35b">Command R 35B — ~20GB</option>
+                                    </optgroup>
+                                    <optgroup label="🪶 Lightweight (Low RAM)">
+                                        <option value="deepseek-coder:1.3b">DeepSeek-Coder 1.3B — ~800MB</option>
+                                        <option value="qwen2.5-coder:1.5b">Qwen2.5-Coder 1.5B — ~1GB</option>
+                                        <option value="starcoder2:3b">StarCoder2 3B — ~2GB</option>
+                                        <option value="phi3:mini">Phi-3 Mini 3.8B — ~2.3GB</option>
+                                        <option value="tinyllama:1.1b">TinyLlama 1.1B — ~640MB</option>
+                                    </optgroup>
+                                </select>
+                                <div style="font-size:11px;color:#5a5a7a;margin-top:4px" id="model-size-hint">~4GB download, runs on 8GB+ RAM</div>
+                            </div>
+                            <div class="pull-progress hidden" id="pull-progress" style="margin-left:40px">
+                                <div class="progress-bar-container"><div class="progress-bar" id="pull-progress-bar"></div></div>
+                                <span class="pull-detail" id="pull-detail">Downloading...</span>
+                            </div>
+                            <button class="btn btn-primary" id="btn-pull-model" onclick="pullModel()" style="margin-left:40px">📦 Pull Model</button>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-header">
+                                <span class="step-number">3</span>
+                                <span class="step-title">Verify Connection</span>
+                                <span class="step-status" id="step-verify-status">⬜ Not verified</span>
+                            </div>
+                            <p class="step-desc">Test that Ollama is running and responds</p>
+                            <button class="btn btn-primary" id="btn-verify" onclick="verifyLLM()">🧪 Test Connection</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- General Settings -->
+                <div class="settings-section card">
+                    <h2 class="section-title">🔧 General</h2>
+                    <div class="setting-row">
+                        <label>Default Severity</label>
+                        <select class="select-input" id="setting-severity">
+                            <option value="low" selected>Low & Above</option>
+                            <option value="medium">Medium & Above</option>
+                            <option value="high">High & Above</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-section card">
+                    <h2 class="section-title">ℹ️ About</h2>
+                    <div class="about-info">
+                        <p><strong>VulnScan5G</strong> v1.0.0</p>
+                        <p>CLI Vulnerability Detection & Auto-Fix Tool for C/C++</p>
+                        <p class="muted">Python • pycparser • Tree-sitter • Ollama</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

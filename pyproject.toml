@@ -1,0 +1,23 @@
+[project]
+name = "vulnscan5g"
+version = "1.0.0"
+description = "CLI vulnerability detector and auto-fixer for C/C++ source files"
+requires-python = ">=3.10"
+
+dependencies = [
+    "click>=8.0",
+    "rich>=13.0",
+    "pycparser>=2.22",
+    "requests>=2.31",
+    "jinja2>=3.1",
+    "tree-sitter>=0.23",
+    "tree-sitter-c>=0.23",
+    "tree-sitter-cpp>=0.23",
+]
+
+[project.scripts]
+vulnscan5g = "vulnscan5g.cli:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
