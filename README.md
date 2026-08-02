@@ -65,10 +65,10 @@ The VulnScan5G pipeline is designed to be sequential, deterministic, and highly 
 <h2 align="center">🛠️ Requirements & Installation</h2>
 
 <h3 align="center">System Requirements</h3>
-- **OS:** Windows, Linux, or macOS.
-- **Python:** Python 3.10 or higher.
-- **Dependencies:** C compiler (`gcc`/`clang`) for compilability testing.
-- **Hardware:** Sufficient RAM and an optional GPU to run local LLMs (e.g., DeepSeek-Coder 6.7B) via Ollama.
+- **OS:**  Windows, Linux, or macOS.
+- **Python:**  Python 3.10 or higher.
+- **Dependencies:**  C compiler (`gcc`/`clang`) for compilability testing.
+- **Hardware:**  Sufficient RAM and an optional GPU to run local LLMs (e.g., DeepSeek-Coder 6.7B) via Ollama.
 
 <h3 align="center">Installation</h3>
 
