@@ -25,7 +25,8 @@ What sets VulnScan5G apart is its robust **auto-patching pipeline**, leveraging 
 <div align="center">
   <img src="images/fig0_architecture.png" alt="VulnScan5G Logo/Banner" width="100%">
   
-## Key Features
+  
+##  Key Features
 
 - 🔍 **High Accuracy Hybrid Scanning**: Combines AST for semantic depth and Regex for speed to minimize both false positives and negatives.
 - 🛠️ **Safe Auto-Patching**: Two-tier fixer guarantees unchanged code is never corrupted. Uses fast templates for known flaws and LLM reasoning for complex bugs.
@@ -35,7 +36,7 @@ What sets VulnScan5G apart is its robust **auto-patching pipeline**, leveraging 
 
 ---
 
-## Architecture & Pipeline Workflow
+##  Architecture & Pipeline Workflow
 
 The VulnScan5G pipeline is designed to be sequential, deterministic, and highly accurate:
 
@@ -123,7 +124,7 @@ python -m vulnscan5g scan ./my_project/ --fix --llm
 
 ---
 
-## LLM Integration (Ollama)
+##  LLM Integration (Ollama)
 
 VulnScan5G integrates seamlessly with local LLMs via Ollama to provide advanced reasoning and auto-patching capabilities.
 
@@ -137,7 +138,7 @@ VulnScan5G integrates seamlessly with local LLMs via Ollama to provide advanced 
 
 ---
 
-## Detection Coverage
+##  Detection Coverage
 
 VulnScan5G includes 25 distinct rules covering a wide range of CWEs. Some key categories include:
 
@@ -154,7 +155,7 @@ VulnScan5G includes 25 distinct rules covering a wide range of CWEs. Some key ca
 
 ---
 
-## Credits & License
+##  Credits & License
 
 - **Datasets:** Uses Juliet Test Suite (C/C++) from the NSA Center for Assured Software.
 - **License:** Distributed under the MIT License. See `LICENSE` for more information.
