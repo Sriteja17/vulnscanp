@@ -1,15 +1,15 @@
-  <h1>🛡️ VulnScan5G</h1>
-  <p><strong>A robust, CLI vulnerability detector and auto-fixer for C/C++ source files.</strong></p>
-
-  <p>
-    <a href="https://www.python.org/downloads/release/python-3100/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python 3.10+"></a>
-    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-  </p>
+<div align="center">
+<h1>🛡️ VulnScan5G</h1>
+<p><strong>A robust, CLI vulnerability detector and auto-fixer for C/C++ source files.</strong></p>
+<p>
+  <a href="https://www.python.org/downloads/release/python-3100/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python 3.10+"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+</p>
 </div>
 
 ---
 
-## 📖 About the Project
+<h2 align="center">📖 About the Project</h2>
 
 **VulnScan5G** is a Python-based vulnerability scanner and auto-patching tool tailored specifically for C and C++ source code. Built for analyzing security-critical code used in 5G network stacks, embedded systems, and any C/C++ project, it provides high accuracy and safety.
 
@@ -22,11 +22,11 @@ What sets VulnScan5G apart is its robust **auto-patching pipeline**, leveraging 
 
 ---
 
-<div align="center">
+<p align="center">
   <img src="images/fig0_architecture.png" alt="VulnScan5G Logo/Banner" width="100%">
-  
-  
-##  Key Features
+</p>
+
+<h2 align="center">Key Features</h2>
 
 - 🔍 **High Accuracy Hybrid Scanning**: Combines AST for semantic depth and Regex for speed to minimize both false positives and negatives.
 - 🛠️ **Safe Auto-Patching**: Two-tier fixer guarantees unchanged code is never corrupted. Uses fast templates for known flaws and LLM reasoning for complex bugs.
@@ -36,7 +36,7 @@ What sets VulnScan5G apart is its robust **auto-patching pipeline**, leveraging 
 
 ---
 
-##  Architecture & Pipeline Workflow
+<h2 align="center">Architecture & Pipeline Workflow</h2>
 
 The VulnScan5G pipeline is designed to be sequential, deterministic, and highly accurate:
 
@@ -62,15 +62,15 @@ The VulnScan5G pipeline is designed to be sequential, deterministic, and highly 
 
 ---
 
-## 🛠️ Requirements & Installation
+<h2 align="center">🛠️ Requirements & Installation</h2>
 
-### System Requirements
+<h3 align="center">System Requirements</h3>
 - **OS:** Windows, Linux, or macOS.
 - **Python:** Python 3.10 or higher.
 - **Dependencies:** C compiler (`gcc`/`clang`) for compilability testing.
 - **Hardware:** Sufficient RAM and an optional GPU to run local LLMs (e.g., DeepSeek-Coder 6.7B) via Ollama.
 
-### Installation
+<h3 align="center">Installation</h3>
 
 1. **Clone the repository:**
    ```bash
@@ -86,7 +86,7 @@ The VulnScan5G pipeline is designed to be sequential, deterministic, and highly 
 
 ---
 
-## Usage & CLI Commands
+<h2 align="center">Usage & CLI Commands</h2>
 
 VulnScan5G provides a rich command-line interface.
 
@@ -95,7 +95,7 @@ VulnScan5G provides a rich command-line interface.
 | `vulnscan5g scan <path>` | Scan files/directories for vulnerabilities. |
 | `vulnscan5g rules` | List all available vulnerability detection rules. |
 
-### Common Use Cases
+<h3 align="center">Common Use Cases</h3>
 
 ```bash
 # 1. Standard Scan (Hybrid: AST + Tree-sitter + Regex)
@@ -117,14 +117,14 @@ python -m vulnscan5g scan ./my_project/ --llm
 python -m vulnscan5g scan ./my_project/ --fix --llm
 ```
 
-### HTML Dashboard Preview
+<h3 align="center">HTML Dashboard Preview</h3>
 <p align="center">
   <img src="images/fig5_html_dashboard.png" alt="HTML Dashboard Preview" width="80%">
 </p>
 
 ---
 
-##  LLM Integration (Ollama)
+<h2 align="center">LLM Integration (Ollama)</h2>
 
 VulnScan5G integrates seamlessly with local LLMs via Ollama to provide advanced reasoning and auto-patching capabilities.
 
@@ -138,7 +138,7 @@ VulnScan5G integrates seamlessly with local LLMs via Ollama to provide advanced 
 
 ---
 
-##  Detection Coverage
+<h2 align="center">Detection Coverage</h2>
 
 VulnScan5G includes 25 distinct rules covering a wide range of CWEs. Some key categories include:
 
@@ -155,7 +155,7 @@ VulnScan5G includes 25 distinct rules covering a wide range of CWEs. Some key ca
 
 ---
 
-##  Credits & License
+<h2 align="center">Credits & License</h2>
 
 - **Datasets:** Uses Juliet Test Suite (C/C++) from the NSA Center for Assured Software.
 - **License:** Distributed under the MIT License. See `LICENSE` for more information.
